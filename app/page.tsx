@@ -1,5 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
+import ProductCard, { Product } from "./components/productCard";
+
+const featuredProducts:Product[]=[
+    {
+    id: "1",
+    name: "Wireless Noise-Canceling Headphones",
+    category: "Electronics",
+    price: 8500,
+    image: "https://i.imgur.com/NLk1wtI.jpeg",
+  },
+  {
+    id: "2",
+    name: "Minimalist Leather Backpack",
+    category: "Accessories",
+    price: 4200,
+    image: "https://i.imgur.com/eK0Usx4.jpeg",
+  },
+  {
+    id: "3",
+    name: "Smart Fitness Watch",
+    category: "Wearables",
+    price: 6800,
+    image: "https://i.imgur.com/Xjqux4g.jpeg",
+  },
+  {
+    id: "4",
+    name: "Ergonomic Desk Lamp",
+    category: "Home Office",
+    price: 3100,
+    image: "https://i.imgur.com/bpxzU1l.jpeg",
+  },
+
+]
 
 export default function Home() {
   return (
@@ -14,6 +47,11 @@ export default function Home() {
         </p>
 
         <div className="mt-8 flex justify-center gap-4">
+          <a href="#storefront"
+          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
+          >
+            Shop Featured
+          </a>
           <Link href="/about"
           className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
           >
@@ -44,6 +82,34 @@ export default function Home() {
             <p className="mt-2 text-gray-600">Reach out anytime through our contact page.</p>
           </div>
         </div>
+
+      </section>
+
+       {/* product grid section */}
+      <section id="storefront" className="mt-16">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Products</h2>
+            <p className="text-gray-600 mt-1">Handpicked items ready for fast dispatch</p>
+          </div>
+
+          <Link href="/shop"
+          className="text-sm font-semibold text-blue-600 hover:text-blue-700"
+          >
+          View all →
+          </Link>
+        </div>
+
+        <div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {
+            featuredProducts.map((product)=>(
+              <ProductCard key={product.id} product={product}/>
+            ))
+          }
+        </div>
+
 
       </section>
 
