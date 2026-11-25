@@ -121,6 +121,7 @@ export default function ShopPage(){
                                     {product.category}
 
                                 </span>
+
                                 <Link href={`/products/${product.id}`}>
                                 <img src={product.imgurl} alt={product.name}
                                 className="w-full h-full object-cover"
@@ -142,6 +143,14 @@ export default function ShopPage(){
                                         KES {product.price.toLocaleString()}
 
                                     </p>
+
+                                    <span
+                                        className={`text-xs font-medium ${product.inStock !== false ? "text-green-600" : "text-red-600"
+                                            }`}
+                                    >
+                                        {product.inStock !== false ? '● In Stock' : '● Out of Stock'}
+
+                                    </span>
                                 </div>
 
                                 <button

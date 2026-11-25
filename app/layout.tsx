@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       
       <body className="min-h-full flex flex-col">
-        <Navbar/>
+        <Suspense fallback={<div className="h-16 bg-white border-b border-gray-200" />}>
+          <Navbar />
+        </Suspense>
 
         {children}
         <Footer/>
